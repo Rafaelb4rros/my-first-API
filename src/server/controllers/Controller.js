@@ -1,4 +1,3 @@
-import Query from "../db/queryfactory/dbQueryFactory.js";
 import PostController from "./postController/PostController.js";
 
 class Controller {
