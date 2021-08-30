@@ -7,14 +7,20 @@ import Router from "./src/server/routes/serverRoutes.js"
 import NotFound from "./src/server/errors/NotFount.js";
 import AlreadyExists from "./src/server/errors/AlreadyExists.js";;
 import InvalidAssignment from "./src/server/errors/InvalidAssignment.js";
-import middleware from "./src/middleware/convert/toJson.js";
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({
     extended: true
 }));
 
-app.use('/', middleware);
+app.use((req, res, next) =>{
+    let reqFormat = 'application/json';
+
+    if(reqFormat !== 'application/json') {
+        res.setHeader('Content-Type', reqFormat);
+    }
+    next();
+})
 
 app.use('/api/posts', Router);
 
