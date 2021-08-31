@@ -20,19 +20,17 @@ class User {
         const user = await userQuery.returnAdmin(this.login);
         let Id = ''
         let Email = '';
-        let Login = '';
         let Password = '';
         user.map(item => {
             Id = item.id;
             Email = item.email;
-            Login = item.login;
             Password = item.password;
         })
          
             const validEmail = await bcrypt.compare(this.email, Email);
-            const validLogin = await bcrypt.compare(this.login, Login);
+            const validId = await bcrypt.compare(this.id, Id);
             const validPassword = await bcrypt.compare(this.password, Password);
-            if (validEmail && validLogin && validPassword) {
+            if (validEmail && validId && validPassword) {
                 const token = jwt.sign({user: Id});
                 const valid = {
                     user: user,
