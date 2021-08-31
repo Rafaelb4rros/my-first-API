@@ -2,10 +2,10 @@
 import connectionuser from "./../serverUsersconfig.js"
 
 const userQuery = {
-    returnAdmin() {
-        return connectionuser.findAll({
+    returnAdmin(login) {
+        return connectionuser.findOne({
             where:{
-                id: process.env.ADMIN_ID
+                login: login
             }
         });
     },

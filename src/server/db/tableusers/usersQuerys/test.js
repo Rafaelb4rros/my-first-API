@@ -6,11 +6,13 @@ const testdele = express.Router();
 
 testdele.post('/', async(req, res) =>{
     try { 
+        let Id = req.body.id;
         let Email = req.body.email;
         let Login = req.body.login
         let Senha = req.body.senha;
+        Id = await bcrypt.hash(Id);
         Email = await bcrypt.hash(Email);
-        Login = await bcrypt.hash(Login);
+        Login = Login;
         Senha = await bcrypt.hash(Senha);
     const data = ({
         email:Email,

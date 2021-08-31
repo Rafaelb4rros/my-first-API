@@ -17,7 +17,7 @@ class User {
 
     async adminLogin() {
         await this.validar();
-        const user = await userQuery.returnAdmin();
+        const user = await userQuery.returnAdmin(this.login);
         let Id = ''
         let Email = '';
         let Login = '';
