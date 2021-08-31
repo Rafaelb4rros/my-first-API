@@ -19,18 +19,15 @@ class User {
         await this.validar();
         const user = await userQuery.returnAdmin(this.login);
         if(user){
-        let Id = ''
+        let Id = '';
         let Email = '';
         let Password = '';
-        user.forEach(item => {
-            Id = item.id;
             Email = item.email;
             Password = item.password;
-        })
+
             const validEmail = await bcrypt.compare(this.email, Email);
-            const validId = await bcrypt.compare(this.id, Id);
             const validPassword = await bcrypt.compare(this.password, Password);
-            if (validEmail && validId && validPassword) {
+            if (validEmail && validPassword) {
                 const token = jwt.sign({user: Id});
                 const valid = {
                     user: user,
