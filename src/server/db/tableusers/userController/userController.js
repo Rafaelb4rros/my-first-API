@@ -22,8 +22,8 @@ class User {
         let Id = '';
         let Email = '';
         let Password = '';
-            Email = item.email;
-            Password = item.password;
+            Email = user.email;
+            Password = user.password;
 
             const validEmail = await bcrypt.compare(this.email, Email);
             const validPassword = await bcrypt.compare(this.password, Password);
