@@ -25,3 +25,5 @@ testdele.post('/', async(req, res) =>{
     console.log(err);
 }
 })
+
+export default testdele;

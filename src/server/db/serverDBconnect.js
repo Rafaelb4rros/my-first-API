@@ -1,8 +1,8 @@
 import Sequelize from "sequelize";
 
 const dbconnection = new Sequelize(process.env.CLEARDB_DATABASE_URL, {
-    host: 'localhost',
-    dialect:  'mysql'
+    host: process.env.HOST,
+    dialect:  process.env.DIALECT
 });
 
 
