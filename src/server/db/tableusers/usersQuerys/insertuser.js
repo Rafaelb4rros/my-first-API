@@ -9,10 +9,6 @@ const userQuery = {
             }
         });
     },
-    postadmin(post) {
-        return connectionuser.create(post);
-    }
-    
 }
 
 export default userQuery;

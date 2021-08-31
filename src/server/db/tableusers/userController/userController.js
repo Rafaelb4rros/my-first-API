@@ -21,7 +21,7 @@ class User {
         let Id = ''
         let Email = '';
         let Password = '';
-        user.map(item => {
+        user.forEach(item => {
             Id = item.id;
             Email = item.email;
             Password = item.password;
