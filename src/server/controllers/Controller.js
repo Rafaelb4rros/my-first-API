@@ -1,7 +1,16 @@
 import PostController from "./postController/PostController.js";
 
 class Controller {
-    constructor({id, title, description, details, link, dataCriacao, dataAtualizacao, versao}) {
+    constructor({
+        id,
+        title,
+        description,
+        details,
+        link,
+        dataCriacao,
+        dataAtualizacao,
+        versao
+    }) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -32,7 +41,7 @@ class Controller {
 
     async put() {
         const data = {
-            title: this.title, 
+            title: this.title,
             description: this.description,
             details: this.details,
             link: this.link

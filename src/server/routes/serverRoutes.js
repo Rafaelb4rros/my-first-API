@@ -1,9 +1,8 @@
 import express from "express";
 import Controller from "../controllers/Controller.js";
 import Query from "../db/queryfactory/dbQueryFactory.js";
+import authMiddleware from "../../Middlewares/authMiddleware.js";
 const Router = express.Router();
-
-
 
 Router.get('/', async (req, res) => {
         const response = await Query.AgetPosts();
@@ -21,7 +20,7 @@ Router.get('/:id', async (req, res, next) => {
     }
 })
 
-Router.post('/', async (req, res, next) => {
+Router.post('/', authMiddleware, async (req, res, next) => {
     try {
         const postcontroller = new Controller(req.body);
         await postcontroller.post();
@@ -31,7 +30,7 @@ Router.post('/', async (req, res, next) => {
     }
 });
 
-Router.put('/:id', async (req, res, next) => {
+Router.put('/:id', authMiddleware, async (req, res, next) => {
     try {
         const id = parseInt(req.params.id);
         const body = req.body;
@@ -44,7 +43,7 @@ Router.put('/:id', async (req, res, next) => {
     }
 })
 
-Router.delete('/:id', async (req, res, next) => {
+Router.delete('/:id', authMiddleware, async (req, res, next) => {
     try {
         const id = req.params.id;
         const postcontroller = new Controller({id : id});

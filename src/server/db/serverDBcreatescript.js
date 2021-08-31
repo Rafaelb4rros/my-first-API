@@ -1,8 +1,11 @@
 import connection from "./serverDBConfig.js";
-
-connection.sync()
-.then(()=>{
-    console.log('criado')
-}).catch(err =>{
+import connectionuser from "./tableusers/serverUsersconfig.js";
+(async function test() {
+    try {
+    await connection.sync()
+    await connectionuser.sync()
+} catch (err) {
     console.log(err)
-})
+}
+})()
+

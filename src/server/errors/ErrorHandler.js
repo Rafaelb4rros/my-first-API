@@ -1,10 +1,11 @@
 import NotFound from "./NotFount.js";
 import AlreadyExists from "./AlreadyExists.js";
 import InvalidAssignment from "./InvalidAssignment.js";
+import InvalidUser from "./InvalidUser.js";
 
 const errorHandler = (error, req, res, next) => {
     let errorStatus = 500;
-    if (error instanceof NotFound) {
+    if (error instanceof NotFound || InvalidUser ) {
         errorStatus = 404;
     }
     if (error instanceof InvalidAssignment) {
@@ -13,6 +14,7 @@ const errorHandler = (error, req, res, next) => {
     if (error instanceof AlreadyExists) {
         errorStatus = 406;
     }
+
     res.status(errorStatus);
     res.send({
         mensagem: error.message,
