@@ -5,7 +5,6 @@ const userRouter = express.Router();
 userRouter.post('/', async (req, res, next) =>{
     try {
     const usercontroller = new User(req.body);
-    console.log(req.body);
     const valid = await usercontroller.adminLogin();
     if(valid) {
     res.status(200).json(valid);

@@ -19,7 +19,7 @@ class User {
         await this.validar();
         console.log(this.email, this.password, this.login);
         const user = await userQuery.returnAdmin(this.login);
-        console.log(user);
+        if(user){
         let Id = ''
         let Email = '';
         let Password = '';
@@ -28,7 +28,6 @@ class User {
             Email = item.email;
             Password = item.password;
         })
-         
             const validEmail = await bcrypt.compare(this.email, Email);
             const validId = await bcrypt.compare(this.id, Id);
             const validPassword = await bcrypt.compare(this.password, Password);
@@ -42,6 +41,9 @@ class User {
             } else {
                 throw new InvalidUser();
             }
+        } else {
+            throw new InvalidUser();
+        }
     }
     async validar() {
         const campos = ['email', 'login', 'password'];
