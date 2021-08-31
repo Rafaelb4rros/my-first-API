@@ -17,7 +17,9 @@ class User {
 
     async adminLogin() {
         await this.validar();
+        console.log(this.email, this.password, this.login);
         const user = await userQuery.returnAdmin(this.login);
+        console.log(user);
         let Id = ''
         let Email = '';
         let Password = '';
