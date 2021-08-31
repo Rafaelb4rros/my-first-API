@@ -8,7 +8,11 @@ const userQuery = {
                 login: login
             }
         });
-    },
+    }
+    // postadmin(post) {
+    //     return connectionuser.create(post);
+    // }
+    
 }
 
 export default userQuery;

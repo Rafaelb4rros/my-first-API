@@ -3,27 +3,22 @@
 // import bcrypt from "bcrypt";
 // const testdele = express.Router();
 
-
-// testdele.post('/', async(req, res) =>{
+// testdele.post('/', async(req,res) =>{
 //     try { 
-//         let Email = req.body.email;
-//         let Login = req.body.login
-//         let Senha = req.body.senha;
-//         Email = await bcrypt.hash(Email);
-//         Login = Login;
-//         Senha = await bcrypt.hash(Senha);
+//         const Email = await bcrypt.hash(req.body.email, 12);
+//         const Senha = await bcrypt.hash(req.body.password, 12);
+//         const Login = req.body.login;
 //     const data = ({
 //         email:Email,
 //         login: Login,
 //         password: Senha
 //     })
 //     const test = await userQuery.postadmin(data);
-//     let Id = test.id;
-//     Id = await bcrypt.hash(Id);
-//     res.send(200).json(test) 
+//     const Id = await bcrypt.hash(test.id, 12);
+  
+//     res.send(200).json(user) 
 // } catch (err){
 //     console.log(err);
 // }
 // })
-
 // export default testdele;
