@@ -18,17 +18,18 @@ class User {
     async adminLogin() {
         await this.validar();
         const user = await userQuery.returnAdmin(this.login);
-        if(user){
-        let Id = '';
-        let Email = '';
-        let Password = '';
-            Email = user.email;
-            Password = user.password;
-
-            const validEmail = await bcrypt.compare(this.email, Email);
-            const validPassword = await bcrypt.compare(this.password, Password);
+        if (user) {
+            const {
+                id,
+                email,
+                password
+            } = user
+            const validEmail = await bcrypt.compare(this.email, email);
+            const validPassword = await bcrypt.compare(this.password, password);
             if (validEmail && validPassword) {
-                const token = jwt.sign({user: Id});
+                const token = jwt.sign({
+                    user: id
+                });
                 const valid = {
                     user: user,
                     token: token

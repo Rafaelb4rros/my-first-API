@@ -13,13 +13,7 @@ class PostController {
         return JSON.stringify(dados);
     }
 
-    async Validate() {
-        const post = await Query.OgetPosts(this.id);
-        if (!post) {
-            throw new NotFound();
-        }
-        return this.json(post);
-    }
+
     async postvalidation() {
         this.validar();
         const post = await Query.AequalTest(this.post.link);
@@ -32,16 +26,24 @@ class PostController {
     }
     async putvalidation() {
         this.validar();
-        await this.Validate(this.id);
+        await this.Validate();
         await Query.AequalTest(this.post.link);
         const post = await Query.OchangePosts(this.id, this.post);
         return this.json(post);
     }
     async deletevalidation() {
-        await this.Validate(this.id);
+        await this.Validate();
         const post = await Query.OdeletePosts(this.id);
         return this.json(post);
     }
+    
+    async Validate() {
+        const post = await Query.OgetPosts(this.id);
+        if (!post) {
+            throw new NotFound();
+        }
+    }
+    
     validar() {
         const campos = ['title', 'description', 'link'];
         campos.forEach(campo => {
