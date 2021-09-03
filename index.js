@@ -4,10 +4,10 @@ import Router from "./src/server/routes/serverRoutes.js"
 import errorHandler from "./src/server/errors/ErrorHandler.js";
 import convertAllrequeststoJson from "./src/Middlewares/middlewaretest.js";
 import userRouter from "./src/server/db/tableusers/tableusersroutes/tableusersRoute.js";
-import rateTimiter from "./src/Middlewares/RequestLimit.js";
+import { customLimiter } from "./src/Middlewares/RequestLimit.js";
 const app = express();
 
-app.use(rateTimiter);
+app.use(customLimiter());
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({
