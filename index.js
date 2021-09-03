@@ -7,7 +7,7 @@ import userRouter from "./src/server/db/tableusers/tableusersroutes/tableusersRo
 import  customLimiter from "./src/Middlewares/RequestLimit.js";
 const app = express();
 
-app.use(customLimiter());
+app.use(customLimiter);
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({
