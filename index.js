@@ -4,7 +4,7 @@ import Router from "./src/server/routes/serverRoutes.js"
 import errorHandler from "./src/server/errors/ErrorHandler.js";
 import convertAllrequeststoJson from "./src/Middlewares/middlewaretest.js";
 import userRouter from "./src/server/db/tableusers/tableusersroutes/tableusersRoute.js";
-import { customLimiter } from "./src/Middlewares/RequestLimit.js";
+import  customLimiter from "./src/Middlewares/RequestLimit.js";
 const app = express();
 
 app.use(customLimiter());

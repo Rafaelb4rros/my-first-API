@@ -1,4 +1,3 @@
-import moment from 'moment';
 import redis from 'redis';
 
 const redisClient = redis.createClient();
@@ -11,9 +10,9 @@ const limiter = new RateLimiterRedis({
   });
   
 
-  export default async function rateTimiter(req, res, next) {
+  export default async function customLimiter(req, res, next) {
     try{
-      await limiter.consume(request.ip);
+      await limiter.consume(req.ip);
       return next();
     }catch(err){
       return response.status(429).json({message: 'Too many requests', code:429})
