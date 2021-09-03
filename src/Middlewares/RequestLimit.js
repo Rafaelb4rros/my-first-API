@@ -3,7 +3,7 @@ import {RateLimiterRedis} from 'rate-limiter-flexible';
 
 const redisClient = redis.createClient({
   host: 'localhost',
-  port:6379,
+  port:3333,
   password: undefined,
 });
 
