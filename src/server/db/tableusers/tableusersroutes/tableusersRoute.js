@@ -10,7 +10,6 @@ userRouter.post('/', async (req, res, next) =>{
     res.status(200).json(valid);
     return valid;
     }
-    res.status(500).end();
 } catch (err) {
    next(err);
 }

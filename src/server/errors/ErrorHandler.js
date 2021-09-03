@@ -18,7 +18,6 @@ const errorHandler = (error, req, res, next) => {
     if (error instanceof AlreadyExists) {
         errorStatus = 406;
     }
-
     res.status(errorStatus);
     res.send({
         mensagem: error.message,

@@ -4,8 +4,10 @@ import Router from "./src/server/routes/serverRoutes.js"
 import errorHandler from "./src/server/errors/ErrorHandler.js";
 import convertAllrequeststoJson from "./src/Middlewares/middlewaretest.js";
 import userRouter from "./src/server/db/tableusers/tableusersroutes/tableusersRoute.js";
+import rateTimiter from "./src/Middlewares/RequestLimit.js";
 const app = express();
 
+app.use(rateTimiter());
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({
@@ -16,7 +18,6 @@ app.use(express.urlencoded({
 app.use(convertAllrequeststoJson);
 app.use('/api/user/admin', userRouter);
 app.use('/api/posts', Router);
-
 app.use(errorHandler);
-app.listen(process.env.PORT, ()=>{console.log(process.env.PORT)});
+app.listen(process.env.PORT);
 

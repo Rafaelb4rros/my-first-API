@@ -3,7 +3,6 @@ import userQuery from "../server/db/tableusers/usersQuerys/insertuser.js";
 const authMiddleware = async (req, res, next) => {
     if (req.headers.authorization !== undefined) {
         const [, token] = req.headers.authorization.split(' ');
-
         try {
             const payload = await jwt.verify(token)
             const user = await userQuery.returnAdmin(payload.user);
