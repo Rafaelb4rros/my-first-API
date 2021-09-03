@@ -16,7 +16,7 @@ const limiter = new RateLimiterRedis({
 
 export default async function rateTimiter(req, res, next) {
   try{
-    await limiter.consume(request.ip);
+    await limiter.consume(req.ip);
     return next();
   }catch(err){
     return response.status(429).json({message: 'Too many requests', code:429})
