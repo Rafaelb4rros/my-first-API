@@ -2,7 +2,6 @@ import NotFound from "./NotFount.js";
 import AlreadyExists from "./AlreadyExists.js";
 import InvalidAssignment from "./InvalidAssignment.js";
 import InvalidUser from "./InvalidUser.js";
-import { ValidationError } from "sequelize/types";
 import { JsonWebTokenError } from "jsonwebtoken";
 
 const errorHandler = (error, req, res, next) => {
@@ -16,7 +15,7 @@ const errorHandler = (error, req, res, next) => {
     if (error instanceof AlreadyExists) {
         errorStatus = 406;
     }
-    
+
     res.status(errorStatus);
     res.send({
         mensagem: error.message,
