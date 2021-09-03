@@ -1,4 +1,5 @@
 import redis from 'redis';
+import {RateLimiterRedis} from 'rate-limiter-flexible';
 
 const redisClient = redis.createClient();
 
